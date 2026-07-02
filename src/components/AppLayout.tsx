@@ -32,8 +32,19 @@ const navItems = [
   { icon: Newspaper, label: "Blog & Tin tức", to: "/blog" as const },
 ];
 
+const promotions = [
+  "🔥 Đăng ký hôm nay - Nhận ngay bộ tài liệu ôn thi trị giá 1.500.000đ!",
+  "🎁 Nhập mã GDP30 - Giảm ngay 30% học phí tất cả các khóa học trọng điểm!",
+  "🎓 Cam kết đầu ra chất lượng cao - Hoàn học phí 100% nếu không tiến bộ!",
+  "⚡ Trải nghiệm học thử 7 ngày miễn phí toàn bộ lớp học từ lớp 6 đến lớp 12!",
+];
+
+const repeatedPromotions = [...promotions, ...promotions, ...promotions, ...promotions];
+
 export function AppLayout({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const [promoOpen, setPromoOpen] = useState(true);
+  const isHomepage = pathname === "/";
 
   const [chatOpen, setChatOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -138,6 +149,41 @@ export function AppLayout({ children }: { children: ReactNode }) {
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">
+        {/* Promotional Bar */}
+        {promoOpen && (
+          <div className="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white text-xs font-semibold py-2.5 px-10 relative overflow-hidden select-none border-b border-white/10 shrink-0">
+            {isHomepage ? (
+              <div className="w-full overflow-hidden relative">
+                {/* Left gradient overlay */}
+                <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-indigo-600 to-transparent pointer-events-none z-10" />
+                {/* Right gradient overlay */}
+                <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-pink-600 to-transparent pointer-events-none z-10" />
+                
+                <div className="animate-marquee-ltr flex items-center gap-12 whitespace-nowrap">
+                  {repeatedPromotions.map((promo, idx) => (
+                    <span key={idx} className="inline-flex items-center gap-2">
+                      {promo}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="w-full flex justify-center items-center text-center">
+                <span>
+                  🎁 Nhập mã <span className="bg-white/20 px-2 py-0.5 rounded text-yellow-300 font-bold mx-1">GDP30</span> - Giảm ngay 30% học phí các khóa học trọng điểm!
+                </span>
+              </div>
+            )}
+            <button
+              onClick={() => setPromoOpen(false)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-white/20 rounded-full transition-colors text-white/90 hover:text-white z-20 cursor-pointer"
+              aria-label="Close promotion"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
+
         {/* Header */}
         <header className="h-20 bg-white/50 backdrop-blur-md border-b border-slate-200 px-4 sm:px-6 flex items-center justify-between sticky top-0 z-10">
           {/* Search */}
