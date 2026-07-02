@@ -173,7 +173,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
         </header>
 
         {/* Page Content */}
-        <main className="py-6 px-4 sm:px-6 w-full max-w-[1680px] mx-auto">
+        <main key={pathname} className="page-transition py-6 px-4 sm:px-6 w-full max-w-[1680px] mx-auto">
           {children}
         </main>
 

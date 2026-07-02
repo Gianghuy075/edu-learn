@@ -74,7 +74,7 @@ function ExamDetail() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F3F4F6] text-foreground flex flex-col font-sans">
+    <div className="page-transition min-h-screen bg-[#F3F4F6] text-foreground flex flex-col font-sans">
       {/* Header */}
       <header className="sticky top-0 z-10 bg-white border-b border-border px-4 sm:px-6 py-3 flex items-center justify-between shadow-sm">
         <div className="flex items-center gap-4">

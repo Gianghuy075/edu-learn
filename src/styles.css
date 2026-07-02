@@ -84,3 +84,19 @@
     font-family: var(--font-sans);
   }
 }
+
+@keyframes slide-in-left-right {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.page-transition {
+  animation: slide-in-left-right 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
