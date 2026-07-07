@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TuyenDungRouteImport } from './routes/tuyen-dung'
 import { Route as ThuVienRouteImport } from './routes/thu-vien'
 import { Route as LopHocRouteImport } from './routes/lop-hoc'
 import { Route as KhoaHocRouteImport } from './routes/khoa-hoc'
@@ -26,6 +27,11 @@ import { Route as ExamPrepSlugRouteImport } from './routes/exam-prep.$slug'
 import { Route as DeThiThuSlugRouteImport } from './routes/de-thi-thu.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
+const TuyenDungRoute = TuyenDungRouteImport.update({
+  id: '/tuyen-dung',
+  path: '/tuyen-dung',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ThuVienRoute = ThuVienRouteImport.update({
   id: '/thu-vien',
   path: '/thu-vien',
@@ -113,6 +119,7 @@ export interface FileRoutesByFullPath {
   '/khoa-hoc': typeof KhoaHocRouteWithChildren
   '/lop-hoc': typeof LopHocRouteWithChildren
   '/thu-vien': typeof ThuVienRouteWithChildren
+  '/tuyen-dung': typeof TuyenDungRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/de-thi-thu/$slug': typeof DeThiThuSlugRoute
   '/exam-prep/$slug': typeof ExamPrepSlugRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/khoa-hoc': typeof KhoaHocRouteWithChildren
+  '/tuyen-dung': typeof TuyenDungRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/de-thi-thu/$slug': typeof DeThiThuSlugRoute
   '/exam-prep/$slug': typeof ExamPrepSlugRoute
@@ -147,6 +155,7 @@ export interface FileRoutesById {
   '/khoa-hoc': typeof KhoaHocRouteWithChildren
   '/lop-hoc': typeof LopHocRouteWithChildren
   '/thu-vien': typeof ThuVienRouteWithChildren
+  '/tuyen-dung': typeof TuyenDungRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/de-thi-thu/$slug': typeof DeThiThuSlugRoute
   '/exam-prep/$slug': typeof ExamPrepSlugRoute
@@ -167,6 +176,7 @@ export interface FileRouteTypes {
     | '/khoa-hoc'
     | '/lop-hoc'
     | '/thu-vien'
+    | '/tuyen-dung'
     | '/blog/$slug'
     | '/de-thi-thu/$slug'
     | '/exam-prep/$slug'
@@ -182,6 +192,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/khoa-hoc'
+    | '/tuyen-dung'
     | '/blog/$slug'
     | '/de-thi-thu/$slug'
     | '/exam-prep/$slug'
@@ -200,6 +211,7 @@ export interface FileRouteTypes {
     | '/khoa-hoc'
     | '/lop-hoc'
     | '/thu-vien'
+    | '/tuyen-dung'
     | '/blog/$slug'
     | '/de-thi-thu/$slug'
     | '/exam-prep/$slug'
@@ -219,6 +231,7 @@ export interface RootRouteChildren {
   KhoaHocRoute: typeof KhoaHocRouteWithChildren
   LopHocRoute: typeof LopHocRouteWithChildren
   ThuVienRoute: typeof ThuVienRouteWithChildren
+  TuyenDungRoute: typeof TuyenDungRoute
   BlogSlugRoute: typeof BlogSlugRoute
   ExamPrepSlugRoute: typeof ExamPrepSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -227,6 +240,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tuyen-dung': {
+      id: '/tuyen-dung'
+      path: '/tuyen-dung'
+      fullPath: '/tuyen-dung'
+      preLoaderRoute: typeof TuyenDungRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/thu-vien': {
       id: '/thu-vien'
       path: '/thu-vien'
@@ -399,6 +419,7 @@ const rootRouteChildren: RootRouteChildren = {
   KhoaHocRoute: KhoaHocRouteWithChildren,
   LopHocRoute: LopHocRouteWithChildren,
   ThuVienRoute: ThuVienRouteWithChildren,
+  TuyenDungRoute: TuyenDungRoute,
   BlogSlugRoute: BlogSlugRoute,
   ExamPrepSlugRoute: ExamPrepSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
