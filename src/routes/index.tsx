@@ -518,6 +518,7 @@ function Index() {
                 <li><a href="#" className="text-slate-600 hover:text-[#0f2868] hover:underline transition-colors">Điều khoản sử dụng</a></li>
                 <li><a href="#" className="text-slate-600 hover:text-[#0f2868] hover:underline transition-colors">Câu hỏi thường gặp</a></li>
                 <li><Link to="/blog" className="text-slate-600 hover:text-[#0f2868] hover:underline transition-colors">Tin tức giáo dục</Link></li>
+                <li><Link to="/tuyen-dung" className="text-slate-600 hover:text-[#0f2868] hover:underline transition-colors font-semibold text-brand-blue">Tuyển dụng</Link></li>
               </ul>
             </div>
           </div>

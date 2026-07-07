@@ -19,6 +19,7 @@ import {
   Send,
   X,
   Sparkles,
+  Briefcase,
 } from "lucide-react";
 import { useState, useEffect, useRef, type ReactNode } from "react";
 
@@ -30,6 +31,7 @@ const navItems = [
   { icon: FileQuestion, label: "Đề thi thử", to: "/de-thi-thu" as const },
   { icon: Library, label: "Thư viện", to: "/thu-vien" as const },
   { icon: Newspaper, label: "Blog & Tin tức", to: "/blog" as const },
+  { icon: Briefcase, label: "Tuyển dụng", to: "/tuyen-dung" as const },
 ];
 
 const promotions = [
